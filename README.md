@@ -1,6 +1,6 @@
 #node-web-metadata
 
-Retrieve a json object containing metadata from a url. Will returns an object consisting of the ```<title>```, ```url``` as well as any additional ```< meta />``` information it is able to parse.
+Retrieve a json object containing metadata from a url. Will returns an object consisting of the ```<title>```, ```url``` as well as any additional ```<meta/>``` information it is able to parse.
 
 ## Example
 ### Pull metadata from http://leap.it
