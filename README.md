@@ -26,6 +26,9 @@ Leap.it
 Leap.it - a whole new take on search. What are you looking to discover? Try it now!
 @leapit
 ```
+# Install
+With [npm](http://npmjs.org) do:
+ ```npm install web-metadata```
 
 # license
 
