@@ -1,6 +1,6 @@
 {
   "name": "web-metadata",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Pulls metadata from a url and return a json object consisting of the page title, url, and any additional meta information it retrieves.",
   "main": "index.js",
   "scripts": {
