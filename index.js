@@ -33,7 +33,7 @@ function parseMetadata (opts, html) {
 
   if (opts.fields.title) {
     // parse the <title> tag:
-    metadata.title = $('head title').text();
+    metadata.title = $('head title').last().text();
   }
   return metadata;
 }
@@ -46,7 +46,7 @@ module.exports = function (opts, cb) {
       title: true
     }
   };
-  
+
   // extend the default options with those passed in:
   opts = extend(defaultOpts, opts);
   if (!cb) { cb = noop; }

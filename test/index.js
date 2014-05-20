@@ -1,4 +1,5 @@
-var assert = require("assert")
+var assert = require('assert')
+  , fs = require('fs')
   , metadata = require('../index.js');
 
 describe('node-web-metadata', function () {
@@ -25,23 +26,36 @@ describe('node-web-metadata', function () {
     });
   });
 
-  it('will parse test html string', function (done) {
-    var data = "<!DOCTYPE html><html><head><meta name='test' content='testing' /></head><body></body></html>";
-    metadata({html:data}, function (err, data) {
-      assert.equal(err, null);
-      assert.notEqual(data, null);
-      assert.equal(data.meta.test, 'testing');
-      done();
+  it('will parse test html data', function (done) {
+    fs.readFile('test/html/test.html', 'utf8', function (err, data) {
+      metadata({html:data}, function (err, data) {
+        assert.equal(err, null);
+        assert.equal(data.meta.description, 'test html pass');
+        assert.equal(data.title, 'test');
+        done();
+      });
     });
   });
 
   it('will parse multiple head tags', function (done) {
-    var data = "<!DOCTYPE html><html><head><meta name='test' content='testing1' /></head><head><meta name='test' content='testing' /></head><body></body></html>";
-    metadata({html:data}, function (err, data) {
-      assert.equal(err, null);
-      assert.notEqual(data, null);
-      assert.equal(data.meta.test, 'testing');
-      done();
+    fs.readFile('test/html/malformed_multiple_head_tags.html', 'utf8', function (err, data) {
+      metadata({html:data}, function (err, data) {
+        assert.equal(err, null);
+        assert.equal(data.meta.description, 'test description #2');
+        assert.equal(data.title, 'testing head #2');
+        done();
+      });
     });
   });
+
+  it('will parse malformed html tag data', function (done) {
+    fs.readFile('test/html/malformed.html', 'utf8', function (err, data) {
+      metadata({html:data}, function (err, data) {
+        assert.equal(err, null);
+        assert.equal(data.meta.description, 'test html pass');
+        assert.equal(data.title, 'test');
+        done();
+      });
+    })
+  })
 });
