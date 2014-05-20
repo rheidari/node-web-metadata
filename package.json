@@ -1,6 +1,6 @@
 {
   "name": "node-web-metadata",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Pulls metadata from a URL and returns it.",
   "main": "index.js",
   "scripts": {
