@@ -4,7 +4,7 @@
   "description": "Pulls metadata from a URL and returns it.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": {
     "name": "Reza Heidari",
