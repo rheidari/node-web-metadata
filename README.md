@@ -6,7 +6,7 @@ Pulls metadata from a URL and returns it.
 ### Pull metadata from http://leap.it
 javascript:
 ``` js
-var metadata = require('node-web-metadata');
+var metadata = require('web-metadata');
 var opts = {
   url: 'http://leap.it'
 };
