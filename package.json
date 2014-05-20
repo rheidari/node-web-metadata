@@ -1,6 +1,6 @@
 {
   "name": "web-metadata",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Pulls metadata from a URL and returns it.",
   "main": "index.js",
   "scripts": {
