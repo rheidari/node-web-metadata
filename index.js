@@ -1,32 +1,67 @@
-var request = require('request')
+var extend = require('util')._extend
+  , request = require('request')
   , cheerio = require('cheerio');
 
-// override url by passing in as an argument:
-var url = process.argv[2] || 'http://leap.it';
+var noop = function () {};
+var defaultOpts = {
+  fields: {
+    url: true,
+    meta: true,
+    title: true
+  }
+};
 
-request(url, function (err, response, html) {
-  var $ = cheerio.load(html)
-    , meta = {};
+module.exports = function (opts, cb) {
+  // extend the default options with those passed in:
+  opts = extend(defaultOpts, opts);
 
-  // parse all <meta> tags:
-  $('head meta').each(function (index, elem) {
-    var $this = $(this)
-      , m = {};
+  if (!cb) { cb = noop; }
 
-    // prioritize key tag by: name, http-equiv, property:
-    m.name = $this.attr('name') || $this.attr('http-equiv') || $this.attr('property');
-    m.content = $this.attr('content');
+  // url is required:
+  if (!opts.url) {
+    process.nextTick(function () { cb('URL Required'); });
+    return;
+  }
 
-    // if there is a name key, add it to the meta object, otherwise discard:
-    if (m.name && m.content) {
-      meta[m.name] = m.content;
+  // retrieve html for further processing:
+  request(opts.url, function (err, response, html) {
+    if (err) {
+      cb("Error Retrieving HTML", err);
+      return;
     }
+
+    var $ = cheerio.load(html)
+      , metadata = {};
+
+    if (opts.fields.url) {
+      metadata.url = opts.url;
+    }
+
+    if (opts.fields.meta) {
+      metadata.meta = {};
+
+      // parse all <meta> tags and attach to metdata.meta object:
+      $('head meta').each(function (index, elem) {
+        var $this = $(this)
+          , m = {};
+
+        // prioritize key tag by: name, http-equiv, property:
+        m.name = $this.attr('name') || $this.attr('http-equiv') || $this.attr('property');
+        m.content = $this.attr('content');
+
+        // if there is a name key, add it to the meta object, otherwise discard:
+        if (m.name && m.content) {
+          metadata.meta[m.name] = m.content;
+        }
+      });
+    }
+
+    if (opts.fields.title) {
+      // parse the <title> tag:
+      metadata.title = $('head title').text();
+    }
+
+    // complete!
+    cb(null, metadata);
   });
-
-  // parse the <title> tag:
-  meta.title = meta.title || $('head title').text();
-
-  // spit out the meta data to std out:
-  console.log(meta);
-  console.log(meta.title, meta['og:title'], meta.description, meta['og:description'], meta['og:image']);
-});
+};

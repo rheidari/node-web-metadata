@@ -1,13 +1,23 @@
 {
-  "name": "meta-extractor",
-  "version": "0.0.0",
-  "description": "",
+  "name": "node-web-metadata",
+  "version": "0.0.1",
+  "description": "Pulls metadata from a URL and returns it.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Reza Heidari",
+    "email": "reza@leap2.com",
+    "url": "http://leap.it"
+  },
+  "keywords": {
+    "cheerio",
+    "request",
+    "metadata",
+    "url"
+  },
+  "license": "MIT",
   "dependencies": {
     "cheerio": "^0.16.0",
     "request": "^2.35.0"
