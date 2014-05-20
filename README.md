@@ -1,6 +1,6 @@
 #node-web-metadata
 
-Pulls metadata from a URL and returns it.
+Pulls metadata from a url and return a json object consisting of the page title, url, and any additional meta information it retrieves.
 
 ## Example
 ### Pull metadata from http://leap.it
