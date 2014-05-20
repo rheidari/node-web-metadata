@@ -11,15 +11,18 @@
     "email": "reza@leap2.com",
     "url": "http://leap.it"
   },
-  "keywords": {
+  "keywords": [
     "cheerio",
     "request",
     "metadata",
     "url"
-  },
+  ],
   "license": "MIT",
   "dependencies": {
     "cheerio": "^0.16.0",
     "request": "^2.35.0"
+  },
+  "devDependencies": {
+    "mocha": "^1.19.0"
   }
 }
