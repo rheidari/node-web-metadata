@@ -2,8 +2,8 @@
 
 Pulls metadata from a URL and returns it.
 
-# Example
-## Pull metadata from http://leap.it
+## Example
+### Pull metadata from http://leap.it
 javascript:
 ``` js
 var metadata = require('web-metadata');
@@ -26,11 +26,11 @@ Leap.it
 Leap.it - a whole new take on search. What are you looking to discover? Try it now!
 @leapit
 ```
-# Install
+## Install
 With [npm](http://npmjs.org) do:
 
  ```npm install web-metadata```
 
-# license
+## License
 
 MIT
