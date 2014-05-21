@@ -1,6 +1,6 @@
 {
   "name": "web-metadata",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "Retrieve a json object containing metadata from a url.",
   "main": "index.js",
   "scripts": {
