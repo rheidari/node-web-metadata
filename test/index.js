@@ -56,6 +56,30 @@ describe('node-web-metadata', function () {
         assert.equal(data.title, 'test');
         done();
       });
-    })
-  })
+    });
+  });
+
+  it('will return contentType for a website url', function (done) {
+    metadata({url:'http://leap.it'}, function (err, data) {
+      assert(data.contentType.indexOf('text/html') !== -1);
+      assert.notEqual(data.url, null);
+      done();
+    });
+  });
+
+  it('will return contentType for an image url', function (done) {
+    metadata({url:'http://leap2-marketing.s3.amazonaws.com/leapit-300x300.jpg'}, function (err, data) {
+      assert(data.contentType.indexOf('image/jpeg') !== -1);
+      assert.notEqual(data.url, null);
+      done();
+    });
+  });
+
+  it('will return contentType for a video url', function (done) {
+    metadata({url:'http://videos-f-8.ak.instagram.com/hphotos-ak-ash/10381557_1558605304366028_1049389520_n.mp4'}, function (err, data) {
+      assert(data.contentType.indexOf('video/mp4') !== -1);
+      assert.notEqual(data.url, null);
+      done();
+    });
+  });
 });
