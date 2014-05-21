@@ -4,12 +4,16 @@ var extend = require('util')._extend
 
 var noop = function () {};
 
-function parseMetadata (opts, html) {
+function parseMetadata (opts, html, contentType) {
   var $ = cheerio.load(html)
     , metadata = {};
 
   if (opts.fields.url) {
     metadata.url = opts.url;
+  }
+
+  if (opts.fields.contentType) {
+    metadata.contentType = contentType || 'text/html';
   }
 
   if (opts.fields.meta) {
@@ -43,7 +47,8 @@ module.exports = function (opts, cb) {
     fields: {
       url: true,
       meta: true,
-      title: true
+      title: true,
+      contentType: true
     }
   };
 
@@ -66,7 +71,7 @@ module.exports = function (opts, cb) {
       }
 
       // complete!
-      cb(null, parseMetadata(opts, html));
+      cb(null, parseMetadata(opts, html, response.headers['content-type']));
     });
   } else {
     // have the HTML, parse and return via callback:

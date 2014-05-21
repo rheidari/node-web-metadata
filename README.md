@@ -14,6 +14,7 @@ metadata(opts, function (err, data) {
   // handle err or data here
   console.log(data.url);
   console.log(data.title);
+  console.log(data.contentType);
   console.log(data.meta.description);
   console.log(data.meta['twitter:site']);
 });
@@ -23,6 +24,7 @@ output:
 ``` html
 http://leap.it
 Leap.it
+text/html; charset=utf-8
 Leap.it - a whole new take on search. What are you looking to discover? Try it now!
 @leapit
 ```
