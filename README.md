@@ -20,7 +20,7 @@ metadata(opts, function (err, data) {
 ```
 
 output:
-``` text
+``` html
 http://leap.it
 Leap.it
 Leap.it - a whole new take on search. What are you looking to discover? Try it now!
