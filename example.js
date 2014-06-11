@@ -1,6 +1,6 @@
 var metadata = require('./index.js');
 var opts = {
-  url: 'http://leap.it'
+  url: 'http://dlvr.it/5xfhth' //'http://leap.it'
 };
 metadata(opts, function (err, data) {
   // handle err or data here
