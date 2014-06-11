@@ -46,6 +46,7 @@ module.exports = function (opts, cb) {
   var defaultOpts = {
     fields: {
       url: true,
+      userAgent: 'metadata request',
       meta: true,
       title: true,
       contentType: true
@@ -64,7 +65,7 @@ module.exports = function (opts, cb) {
 
   if (opts.url) {
     // retrieve html for further processing:
-    request(opts.url, function (err, response, html) {
+    request({url:opts.url, headers: {'User-Agent':opts.userAgent}}, function (err, response, html) {
       if (err) {
         cb('Error Retrieving HTML', err);
         return;
