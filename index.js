@@ -44,9 +44,9 @@ function parseMetadata (opts, html, contentType) {
 
 module.exports = function (opts, cb) {
   var defaultOpts = {
+    userAgent: 'metadata request'
     fields: {
       url: true,
-      userAgent: 'metadata request',
       meta: true,
       title: true,
       contentType: true
