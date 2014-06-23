@@ -59,7 +59,7 @@ module.exports = function (opts, cb) {
 
   // url is required:
   if (!opts.url && !opts.html) {
-    process.nextTick(function () { cb('Missing url or html option'); });
+    process.nextTick(function () { cb(new Error('Missing url or html option')); });
     return;
   }
 
@@ -67,7 +67,7 @@ module.exports = function (opts, cb) {
     // retrieve html for further processing:
     request({url:opts.url, headers: {'User-Agent':opts.userAgent}}, function (err, response, html) {
       if (err) {
-        cb('Error Retrieving HTML', err);
+        cb(new Error('Error Retrieving HTML'), err);
         return;
       }
 
