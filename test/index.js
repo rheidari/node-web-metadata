@@ -6,14 +6,14 @@ describe('node-web-metadata', function () {
 
   it('expects a url or html option', function (done) {
     metadata(null, function (err, data) {
-      assert.equal(err, 'Missing url or html option');
+      assert.equal(err.message, 'Missing url or html option');
       done();
     });
   });
 
   it('expects a valid url', function (done) {
     metadata({url:'invalidurl'}, function (err, data) {
-      assert.equal(err, 'Error Retrieving HTML');
+      assert.equal(err.message, 'Error Retrieving HTML');
       done();
     });
   });
