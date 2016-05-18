@@ -30,7 +30,12 @@ function parseMetadata (opts, html, contentType) {
 
       // if there is a name key, add it to the meta object, otherwise discard:
       if (m.name && m.content) {
-        metadata.meta[m.name] = m.content;
+        if (metadata.meta[m.name]) {
+          metadata.meta[m.name + 's'] = metadata.meta[m.name + 's'] || [metadata.meta[m.name]]
+          metadata.meta[m.name + 's'].push(m.content)
+        } else {
+          metadata.meta[m.name] = m.content;
+        }
       }
     });
   }
