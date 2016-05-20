@@ -42,7 +42,7 @@ function parseMetadata (opts, html, contentType) {
 
   if (opts.fields.title) {
     // parse the <title> tag:
-    metadata.title = $('head title').last().text();
+    metadata.title = $('head title').first().text();
   }
   return metadata;
 }
