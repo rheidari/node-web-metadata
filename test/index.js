@@ -82,5 +82,5 @@ describe('node-web-metadata', function () {
       assert.notEqual(data.url, null);
       done();
     });
-  });
+  }).timeout(5000);
 });
